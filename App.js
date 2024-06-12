@@ -2,85 +2,85 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 const App = () => {
+    const ButtonCustom = ({color, text}) => {
     return (
-        <View style={{flex:1}}>
             <View style={{   
-                backgroundColor: '#E5E4E2',
-                top: 0,
-                bottom: 0,
-                height: 60,
+                backgroundColor: color,
+                width: 90,
+                height: 50,
+                borderRadius: 20,
                 justifyContent: 'center',
             }}>
                 <Text style={{
-                    fontSize:30,
-                    color: 'green',
+                    fontSize:20,
+                    color: 'white',
                     textAlign: 'center',
-                    fontWeight: 'bold'
                 }}>
-                    aulyaStore
-                </Text>
-            </View>
+                </Text>{text}
+                </View>
+            )
+          }
+          return (  
             <View style={{
                 flex: 1,
+                backgroundColor: 'black'
+            }}>
+             <View>
+                <Text style={{
+                    fontSize: 20,
+                    textAlign: 'center',
+                    top: 50,
+                    bottom: 0,
+                    color: 'yellow'
+            }}>
+                aulyaStore
+              </Text>
+              </View>
+
+            <View style={{
+                flex: 1,
+                top: 100,
                 justifyContent: 'center',
                 alignItems: 'center',
-                top: '10%'
             }}>
-                <Image source={require('./assets/cat.jpeg')} style={{
-                    height: '100%',
-                    width: '80%',
-                    resizeMode: 'contain',
-                }} />
-            </View>
-            <View style={{
+                <Image source={require('./assets/img/cat.jpeg')} 
+                style={{
+                    width:200,
+                    height:200,
+                    resizeMode:'contain'
+                }}  />
+            </View> 
+
+            <View style= {{
                 flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'center',
                 alignItems: 'flex-end',
+                justifyContent: 'center',
+                flexDirection: 'row',
+                justifyContent: 'space-evenly',
+                marginBottom: 80
             }}>
-                <View style={{
-                    backgroundColor: 'blue',
-                    height: 60,
-                    width: 120,
+                <View style= {{
+                    flex: 1,
+                    width: 80,
+                    height: 40,
                     justifyContent: 'center',
-                    borderRadius: 10,
-                    bottom: 40,
-                    right: 10
-                }}>
-                    <Text style={{
-                        color: 'white',
-                        fontSize: 20,
-                        fontWeight: 'bold',
-                        alignItems: 'center',
-                        textAlign: 'center'
-                    }}> 
-                    Login 
-                    </Text>
-                </View>
-                <View style={{
-                    backgroundColor: 'green',
-                    height: 60,
-                    width: 120,
-                    justifyContent: 'center',
-                    borderRadius: 10,
-                    bottom: 40,
-                    left: 10
-                
-                }}>
-                    <Text style={{
-                        color: 'white',
-                        fontSize: 20,
-                        fontWeight: 'bold',
-                        alignItems: 'center',
-                        textAlign: 'center'
-                    }}> 
-                    Register 
-                    </Text>
+                    borderRadius: 25,
+                    flexDirection: 'row',
+                    columnGap: 20,
+                    textAlign: 'center',
+                    bottom:200
+        
+            }}>
+                <ButtonCustom color= 'green' text= 'Login'/>
+                <ButtonCustom color= 'blue' text= 'Sign Up'/>
+          
                 </View>
             </View>
         </View>
-
-    );
-}
-
+          )
+        }
+        
 export default App;
+                
+
+    
