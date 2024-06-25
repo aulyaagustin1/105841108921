@@ -1,69 +1,112 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import ButtonCustom from './assets/component/button';
+import { StyleSheet, Text, View, TextInput, Image } from "react-native";
+import React from "react";
 
 const App = () => {
-          return (  
-            <View style={{
-                flex: 1,
-                backgroundColor: 'black'
-            }}>
-             <View>
-                <Text style={{
-                    fontSize: 20,
-                    textAlign: 'center',
-                    top: 50,
-                    bottom: 0,
-                    color: 'yellow'
-            }}>
-                aulyaStore
-              </Text>
-              </View>
+    const TextInputCustom = ({name, color}) => {
+        return (
+            <TextInput placeholder={` ${name}`}
+            style={{
+                borderColor:'gray',
+                width:'90%',
+                height:'64px',
+                marginBottom:10,
+                padding:10,
+                color:color,
+                backgroundColor:'white',
+                shadowColor:'black',
+                shadowRadius:1,
+                shadowOpacity:0.2
+            }}
+            />
+        )
+    }
 
-            <View style={{
-                flex: 1,
-                top: 100,
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
-                <Image source={require('./assets/img/cat.jpeg')} 
-                style={{
-                    width:200,
-                    height:200,
-                    resizeMode:'contain'
-                }}  />
-            </View> 
 
-            <View style= {{
-                flex: 1,
-                alignItems: 'flex-end',
-                justifyContent: 'center',
-                flexDirection: 'row',
-                justifyContent: 'space-evenly',
-                marginBottom: 80
-            }}>
-                <View style= {{
-                    flex: 1,
-                    width: 80,
-                    height: 40,
-                    justifyContent: 'center',
-                    borderRadius: 25,
-                    flexDirection: 'row',
-                    columnGap: 20,
-                    textAlign: 'center',
-                    bottom:200
-        
-            }}>
-                <ButtonCustom color= 'green' text= 'Login'/>
-                <ButtonCustom color= 'blue' text= 'Sign Up'/>
-          
-                </View>
-            </View>
+const ButtonCustom =({color, text}) => {
+    return (
+        <View style={{
+            backgroundColor:color,
+            width:'90%',
+            height:50,
+            borderRadius:20,
+            justifyContent:'center'
+        }}>
+            <Text style={{
+                textAlign:'center',
+                fontSize:15,
+                color:'white'
+            }}> {text}
+
+            </Text>
         </View>
-          )
-        }
-        
-export default App;
-                
+    )
+}
 
-    
+return (
+    <View style={{
+        flex:1,
+        backgroundColor:'#F5F5F5'
+    }}>
+        <View style={{
+            flex:1,
+            alignItems:'flex-start',
+            justifyContent:'flex-start',
+            width:'100%',
+            paddingLeft:'14px',
+            top:106
+        }}>
+            <Text style={{
+                fontSize:'34px',
+                lineHeight:'34px',
+                fontWeight:'bold',
+                color:'#222222'
+            }}>Sign Up</Text>
+        </View>
+
+        <View style={{
+            flex:1,
+            width:'100%',
+            height:'64px',
+            top:40,
+            alignItems:'center',
+            alignSelf:'center'
+        }}>
+            <TextInputCustom name='Name' color='#666666'/>
+            <TextInputCustom name='Email' color='#666666'/>
+            <TextInputCustom name='Password' color='#666666'/>
+        </View>
+
+        <View style={{
+            flex:1,
+            top:50,
+        }}>
+            <Text style={{
+                color:'#222222',
+                alignSelf:'flex-end',
+                right:30
+            }}>Already have an account?</Text>
+        </View>
+
+        <View style={{
+            flex:1,
+            justifyContent:'flex-end',
+            alignItems:'center',
+            bottom:120,
+            width:'100%'
+        }}>
+            <ButtonCustom color='red' text='SIGN UP'/>
+        </View>
+
+        <View style={{
+            alignSelf:'center',
+        }}>
+            <Text style={{
+                color:'#222222',
+                fontSize:14,
+                
+            }}>Or sign up with social account</Text>
+        </View>
+    </View>
+)
+}
+export default App
