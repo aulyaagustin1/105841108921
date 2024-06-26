@@ -21,7 +21,6 @@ const App = () => {
         )
     }
 
-
 const ButtonCustom =({color, text}) => {
     return (
         <View style={{
