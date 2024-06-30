@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput, Image } from "react-native";
 import React from "react";
+import { useFonts } from "expo-font";
 
-const App = () => {
     const TextInputCustom = ({name, color}) => {
         return (
             <TextInput placeholder={` ${name}`}
@@ -42,6 +42,18 @@ const ButtonCustom =({color, text}) => {
     )
 }
 
+const App = () => {
+    const [fontsLoaded] = useFonts({
+                'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
+                'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
+                'Metro-Light': require('./assets/fonts/Metropolis-Light.otf'),
+                'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
+                'Metro-SemiBold': require('./assets/fonts/Metropolis-SemiBold.otf'),
+            })
+        
+            if (!fontsLoaded) return <View>
+                <Text>Font Tidak Ditemukan</Text>
+            </View>
 return (
     <View style={{
         flex:1,
@@ -59,7 +71,8 @@ return (
                 fontSize:'34px',
                 lineHeight:'34px',
                 fontWeight:'bold',
-                color:'#222222'
+                color:'#222222',
+                fontFamily: 'Metro-Bold'
             }}>Sign Up</Text>
         </View>
 
@@ -69,7 +82,8 @@ return (
             height:'64px',
             top:40,
             alignItems:'center',
-            alignSelf:'center'
+            alignSelf:'center',
+            fontFamily:'Metro-Medium'
         }}>
             <TextInputCustom name='Name' color='#666666'/>
             <TextInputCustom name='Email' color='#666666'/>
@@ -83,7 +97,8 @@ return (
             <Text style={{
                 color:'#222222',
                 alignSelf:'flex-end',
-                right:30
+                right:30,
+                fontFamily:'Metro-Medium'
             }}>Already have an account?</Text>
         </View>
 
@@ -91,19 +106,21 @@ return (
             flex:1,
             justifyContent:'flex-end',
             alignItems:'center',
-            bottom:300,
-            width:'100%'
+            bottom:150,
+            width:'100%',
+            fontFamily:'Metro-Bold'
         }}>
             <ButtonCustom color='red' text='SIGN UP'/>
         </View>
 
         <View style={{
             alignSelf:'center',
-            bottom:150
+            bottom:40
         }}>
             <Text style={{
                 color:'#222222',
                 fontSize:14,
+                fontFamily:'Metro-Medium'
             }}>Or sign up with social account</Text>
         </View>
 
@@ -111,7 +128,7 @@ return (
             flexDirection: 'row',
             columnGap: 10,
             alignSelf:'center',
-            bottom:140
+            bottom:30
         }}>
             <View style={{
                 backgroundColor: 'white',

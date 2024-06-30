@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, TextInput, Image } from "react-native";
 import React from "react";
+import { useFonts } from "expo-font";
 
-const App = () => {
-    const TextInputCustom = ({name, color}) => {
-        return (
+const TextInputCustom = ({name, color}) => {
+    return (
             <TextInput placeholder={` ${name}`}
             style={{
                 borderColor:'gray',
@@ -20,16 +20,16 @@ const App = () => {
             />
         )
     }
-
-const ButtonCustom =({color, text}) => {
-    return (
-        <View style={{
-            backgroundColor:color,
-            width:'90%',
-            height:50,
-            borderRadius:20,
-            justifyContent:'center'
-        }}>
+    
+    const ButtonCustom =({color, text}) => {
+        return (
+            <View style={{
+                backgroundColor:color,
+                width:'90%',
+                height:50,
+                borderRadius:20,
+                justifyContent:'center'
+            }}>
             <Text style={{
                 textAlign:'center',
                 fontSize:15,
@@ -41,6 +41,17 @@ const ButtonCustom =({color, text}) => {
     )
 }
 
+const App = () => {
+    const [fontsLoaded] = useFonts({
+        'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
+        'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
+        'Metro-Light': require('./assets/fonts/Metropolis-Light.otf'),
+        'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
+        'Metro-SemiBold': require('./assets/fonts/Metropolis-SemiBold.otf'),
+        })
+        if (!fontsLoaded) return <View>
+            <Text>Font Tidak Ditemukan</Text>
+            </View>
 return (
     <View style={{
         flex:1,
@@ -57,7 +68,7 @@ return (
             <Text style={{
                 fontSize:'34px',
                 lineHeight:'34px',
-                fontWeight:'bold',
+                fontFamily:'Metro-Bold',
                 color:'#222222'
             }}>Forgot Password</Text>
         </View>
@@ -69,7 +80,8 @@ return (
                 color:'#222222',
                 alignSelf:'center',
                 padding:20,
-                bottom:50
+                bottom:10,
+                fontFamily:'Metro-Medium'
             }}>Please, enteer your email addrerss. You will receive a link to create a new password via email.</Text>
         </View>
 
@@ -77,9 +89,10 @@ return (
             flex:1,
             width:'100%',
             height:'64px',
-            bottom:180,
+            bottom:100,
             alignItems:'center',
-            alignSelf:'center'
+            alignSelf:'center',
+            fontFamily:'Metro-Medium'
         }}>
             <TextInputCustom name='Email' color='#666666'/>
         </View>
@@ -89,8 +102,9 @@ return (
             flex:1,
             justifyContent:'flex-end',
             alignItems:'center',
-            bottom:500,
-            width:'100%'
+            bottom:270,
+            width:'100%',
+            fontFamily:'Metro-SemiBold'
         }}>
             <ButtonCustom color='red' text='SEND'/>
         </View>
