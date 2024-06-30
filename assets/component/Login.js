@@ -8,7 +8,7 @@ import { useFonts } from "expo-font";
             style={{
                 borderColor:'gray',
                 width:'90%',
-                height:'64px',
+                height:64,
                 marginBottom:10,
                 padding:10,
                 color:color,
@@ -41,13 +41,13 @@ const ButtonCustom =({color, text}) => {
     )
 }
 
-const App = () => {
+const Login = () => {
     const [fontsLoaded, fontError] = useFonts({
-        'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
-        'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
-        'Metro-Light': require('./assets/fonts/Metropolis-Light.otf'),
-        'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
-        'Metro-SemiBold': require('./assets/fonts/Metropolis-SemiBold.otf'),
+        'Metro-Bold': require('../fonts/Metropolis-Bold.otf'),
+        'Metro-Black': require('../fonts/Metropolis-Black.otf'),
+        'Metro-Light': require('../fonts/Metropolis-Light.otf'),
+        'Metro-Medium': require('../fonts/Metropolis-Medium.otf'),
+        'Metro-SemiBold': require('../fonts/Metropolis-SemiBold.otf'),
     })
 
     if (!fontsLoaded) return <View>
@@ -63,12 +63,12 @@ return (
             alignItems:'flex-start',
             justifyContent:'flex-start',
             width:'100%',
-            paddingLeft:'14px',
-            top:106
+            paddingLeft:14,
+            top:26
         }}>
             <Text style={{
-                fontSize:'34px',
-                lineHeight:'34px',
+                fontSize:34,
+                lineHeight:34,
                 color:'#222222',
                 fontFamily:'Metro-Bold'
             }}>Login</Text>
@@ -77,8 +77,8 @@ return (
         <View style={{
             flex:1,
             width:'100%',
-            height:'64px',
-            top:40,
+            height:64,
+            bottom:30,
             alignItems:'center',
             alignSelf:'center',
             fontFamily:'Metro-Medium'
@@ -88,8 +88,7 @@ return (
         </View>
 
         <View style={{
-            flex:1,
-            top:50,
+            bottom:20,
         }}>
             <Text style={{
                 color:'#222222',
@@ -103,7 +102,7 @@ return (
             flex:1,
             justifyContent:'flex-end',
             alignItems:'center',
-            bottom:150,
+            bottom:70,
             width:'100%',
             fontFamily:'Metro-Black'
         }}>
@@ -112,7 +111,7 @@ return (
 
         <View style={{
             alignSelf:'center',
-            bottom:50
+            bottom:35
         }}>
             <Text style={{
                 color:'#222222',
@@ -125,14 +124,14 @@ return (
             flexDirection: 'row',
             columnGap: 10,
             alignSelf:'center',
-            bottom:40
+            bottom:20
         }}>
             <View style={{
                 backgroundColor: 'white',
                 borderRadius:10,
                 padding:10
             }}>
-                <Image source={require('./assets/img/google.png')} style={{width:30, height:30, resizeMode:'contain'}}/>
+                <Image source={require('../img/google.png')} style={{width:30, height:30, resizeMode:'contain'}}/>
             </View>
 
             <View style={{
@@ -140,11 +139,11 @@ return (
                 borderRadius:10,
                 padding:10
             }}>
-                <Image source={require('./assets/img/facebook.png')} style={{width:30, height:30, resizeMode:'contain'}}/>
+                <Image source={require('../img/facebook.png')} style={{width:30, height:30, resizeMode:'contain'}}/>
             </View>
         </View>
             
         </View>
 )
 }
-export default App
+export default Login

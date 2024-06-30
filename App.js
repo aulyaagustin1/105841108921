@@ -457,117 +457,173 @@
 // }
 // export default App
 
-import { StyleSheet, Text, View, TextInput, Image } from "react-native";
-import React from "react";
-import { useFonts } from "expo-font";
+// import { StyleSheet, Text, View, TextInput, Image } from "react-native";
+// import React from "react";
+// import { useFonts } from "expo-font";
 
-const TextInputCustom = ({name, color}) => {
-    return (
-            <TextInput placeholder={` ${name}`}
-            style={{
-                borderColor:'gray',
-                width:'90%',
-                height:'64px',
-                marginBottom:10,
-                padding:10,
-                color:color,
-                backgroundColor:'white',
-                shadowColor:'black',
-                shadowRadius:1,
-                shadowOpacity:0.2
-            }}
-            />
-        )
-    }
+// const TextInputCustom = ({name, color}) => {
+//     return (
+//             <TextInput placeholder={` ${name}`}
+//             style={{
+//                 borderColor:'gray',
+//                 width:'90%',
+//                 height:'64px',
+//                 marginBottom:10,
+//                 padding:10,
+//                 color:color,
+//                 backgroundColor:'white',
+//                 shadowColor:'black',
+//                 shadowRadius:1,
+//                 shadowOpacity:0.2
+//             }}
+//             />
+//         )
+//     }
     
-    const ButtonCustom =({color, text}) => {
-        return (
-            <View style={{
-                backgroundColor:color,
-                width:'90%',
-                height:50,
-                borderRadius:20,
-                justifyContent:'center'
+//     const ButtonCustom =({color, text}) => {
+//         return (
+//             <View style={{
+//                 backgroundColor:color,
+//                 width:'90%',
+//                 height:50,
+//                 borderRadius:20,
+//                 justifyContent:'center'
+//             }}>
+//             <Text style={{
+//                 textAlign:'center',
+//                 fontSize:15,
+//                 color:'white'
+//             }}> {text}
+
+//             </Text>
+//         </View>
+//     )
+// }
+
+
+//* Use Font
+
+// const App = () => {
+//     const [fontsLoaded] = useFonts({
+//         'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
+//         'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
+//         'Metro-Light': require('./assets/fonts/Metropolis-Light.otf'),
+//         'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
+//         'Metro-SemiBold': require('./assets/fonts/Metropolis-SemiBold.otf'),
+//         })
+//         if (!fontsLoaded) return <View>
+//             <Text>Font Tidak Ditemukan</Text>
+//             </View>
+// return (
+//     <View style={{
+//         flex:1,
+//         backgroundColor:'#F5F5F5'
+//     }}>
+//         <View style={{
+//             flex:1,
+//             alignItems:'flex-start',
+//             justifyContent:'flex-start',
+//             width:'100%',
+//             paddingLeft:'14px',
+//             top:106
+//         }}>
+//             <Text style={{
+//                 fontSize:'34px',
+//                 lineHeight:'34px',
+//                 fontFamily:'Metro-Bold',
+//                 color:'#222222'
+//             }}>Forgot Password</Text>
+//         </View>
+
+//         <View style={{
+//             flex:1,
+//         }}>
+//             <Text style={{
+//                 color:'#222222',
+//                 alignSelf:'center',
+//                 padding:20,
+//                 bottom:10,
+//                 fontFamily:'Metro-Medium'
+//             }}>Please, enteer your email addrerss. You will receive a link to create a new password via email.</Text>
+//         </View>
+
+//         <View style={{
+//             flex:1,
+//             width:'100%',
+//             height:'64px',
+//             bottom:100,
+//             alignItems:'center',
+//             alignSelf:'center',
+//             fontFamily:'Metro-Medium'
+//         }}>
+//             <TextInputCustom name='Email' color='#666666'/>
+//         </View>
+
+//         <View style={{
+//             flex:1,
+//             justifyContent:'flex-end',
+//             alignItems:'center',
+//             bottom:270,
+//             width:'100%',
+//             fontFamily:'Metro-SemiBold'
+//         }}>
+//             <ButtonCustom color='red' text='SEND'/>
+//         </View>
+//         </View>
+// )
+// }
+// export default App
+
+//* Navigation dan Taksbar
+
+import * as React from 'react';
+import { View, Text, Button } from 'react-native';
+import { NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginPage from './assets/component/Login';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
+function MyTabs() {
+    return (
+        <Tab.Navigator>
+            <Tab.Screen
+            options = {{
+                headerShown: false,
+            }}
+            name = "Home" component = {HomeScreen}/>
+            <Tab.Screen name = "Login" component = {LoginPage}/>
+            </Tab.Navigator>
+    );
+}
+
+function HomeScreen({ navigation }) {
+    return (
+        <View style = {{ 
+            flex: 1, 
+            alignItems: 'center', 
+            justifyContent: 'center', 
             }}>
-            <Text style={{
-                textAlign:'center',
-                fontSize:15,
-                color:'white'
-            }}> {text}
-
-            </Text>
+            <Text style = {{
+                bottom:30,
+                fontSize:30,
+                fontWeight:'bold'
+                
+            }}> Home Screen</Text>
+            <Button
+            title = 'Go To Login'
+            onPress = {() => navigation.navigate('Login')}/>
         </View>
-    )
+    );
 }
-
-const App = () => {
-    const [fontsLoaded] = useFonts({
-        'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
-        'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
-        'Metro-Light': require('./assets/fonts/Metropolis-Light.otf'),
-        'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
-        'Metro-SemiBold': require('./assets/fonts/Metropolis-SemiBold.otf'),
-        })
-        if (!fontsLoaded) return <View>
-            <Text>Font Tidak Ditemukan</Text>
-            </View>
-return (
-    <View style={{
-        flex:1,
-        backgroundColor:'#F5F5F5'
-    }}>
-        <View style={{
-            flex:1,
-            alignItems:'flex-start',
-            justifyContent:'flex-start',
-            width:'100%',
-            paddingLeft:'14px',
-            top:106
-        }}>
-            <Text style={{
-                fontSize:'34px',
-                lineHeight:'34px',
-                fontFamily:'Metro-Bold',
-                color:'#222222'
-            }}>Forgot Password</Text>
-        </View>
-
-        <View style={{
-            flex:1,
-        }}>
-            <Text style={{
-                color:'#222222',
-                alignSelf:'center',
-                padding:20,
-                bottom:10,
-                fontFamily:'Metro-Medium'
-            }}>Please, enteer your email addrerss. You will receive a link to create a new password via email.</Text>
-        </View>
-
-        <View style={{
-            flex:1,
-            width:'100%',
-            height:'64px',
-            bottom:100,
-            alignItems:'center',
-            alignSelf:'center',
-            fontFamily:'Metro-Medium'
-        }}>
-            <TextInputCustom name='Email' color='#666666'/>
-        </View>
-
-
-        <View style={{
-            flex:1,
-            justifyContent:'flex-end',
-            alignItems:'center',
-            bottom:270,
-            width:'100%',
-            fontFamily:'Metro-SemiBold'
-        }}>
-            <ButtonCustom color='red' text='SEND'/>
-        </View>
-        </View>
-)
+const Stack = createNativeStackNavigator();
+function App() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+               <Stack.Screen name = 'Home' component = {MyTabs}/>
+               </Stack.Navigator>
+               </NavigationContainer>
+    );
 }
-export default App
+export default App;
