@@ -582,48 +582,116 @@ import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginPage from './assets/component/Login';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeAktif from './assets/img/homeAktf.jpg';
+import HomeTdkAktif from './assets/img/homeNon.jpg';
+import shopAktif from './assets/img/shopAktf.jpg';
+import shopTdkAktif from './assets/img/shopNon.jpg';
+import { Image } from 'react-native';
 
+// Navigation Bagian 1 
+// const Tab = createBottomTabNavigator();
+// function MyTabs() {
+//     return (~
+//         <Tab.Navigator>
+//             <Tab.Screen
+//             options = {{
+//                 headerShown: false,
+//             }}
+//             name = "Home" component = {HomeScreen}/>
+//             <Tab.Screen name = "Login" component = {LoginPage}/>
+//             </Tab.Navigator>
+//     );
+// }
+
+// function HomeScreen({ navigation }) {
+//     return (
+//         <View style = {{ 
+//             flex: 1, 
+//             alignItems: 'center', 
+//             justifyContent: 'center', 
+//             }}>
+//             <Text style = {{
+//                 bottom:30,
+//                 fontSize:30,
+//                 fontWeight:'bold'
+                
+//             }}> Home Screen</Text>
+//             <Button
+//             title = 'Go To Login'
+//             onPress = {() => navigation.navigate('Login')}/>
+//         </View>
+//     );
+// }
+// const Stack = createNativeStackNavigator();
+// function App() {
+//     return (
+//         <NavigationContainer>
+//             <Stack.Navigator>
+//                <Stack.Screen name = 'Home' component = {MyTabs}/>
+//                </Stack.Navigator>
+//                </NavigationContainer>
+//     );
+// }
+// export default App;
+
+// Navigation Bagian 2
 const Tab = createBottomTabNavigator();
+
 function MyTabs() {
     return (
         <Tab.Navigator>
             <Tab.Screen
+            name="Home" 
+            component={HomeScreen}
             options = {{
                 headerShown: false,
+                tabBarIcon: ({focused}) => (
+                    <Image
+                    source = {focused ? HomeAktif : HomeTdkAktif}
+                    style = {{ width: 40, height: 40 }}
+                 />
+              ),
             }}
-            name = "Home" component = {HomeScreen}/>
-            <Tab.Screen name = "Login" component = {LoginPage}/>
+         />
+            <Tab.Screen
+            name = "Login"
+            component = {LoginPage}
+            options = {{
+                tabBarIcon: ({focused}) => (
+                    <Image
+                    source = { focused ? shopAktif : shopTdkAktif }
+                    style = {{ width: 40, height: 40 }}
+                 />
+               ),
+            }}
+         />
             </Tab.Navigator>
     );
 }
 
 function HomeScreen({ navigation }) {
     return (
-        <View style = {{ 
-            flex: 1, 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            }}>
-            <Text style = {{
-                bottom:30,
-                fontSize:30,
-                fontWeight:'bold'
-                
-            }}> Home Screen</Text>
+        <View style = {{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Home Screen</Text>
             <Button
-            title = 'Go To Login'
-            onPress = {() => navigation.navigate('Login')}/>
+             title = 'Go To Login'
+             onPress = {() => navigation.navigate('Login')}
+                />
         </View>
     );
 }
+
 const Stack = createNativeStackNavigator();
+
 function App() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-               <Stack.Screen name = 'Home' component = {MyTabs}/>
-               </Stack.Navigator>
-               </NavigationContainer>
+                <Stack.Screen name = 'Home' component = {MyTabs}/>
+                <Stack.Screen name = 'Login' component = {LoginPage}/>
+                </Stack.Navigator>
+                </NavigationContainer>
     );
 }
+
 export default App;
