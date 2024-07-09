@@ -1,7 +1,5 @@
 import { StyleSheet, Text, View, TextInput, Image } from "react-native";
 import React from "react";
-import { useFonts } from "expo-font";
-
 const TextInputCustom = ({name, color}) => {
     return (
             <TextInput placeholder={` ${name}`}
@@ -15,7 +13,8 @@ const TextInputCustom = ({name, color}) => {
                 backgroundColor:'white',
                 shadowColor:'black',
                 shadowRadius:1,
-                shadowOpacity:0.2
+                shadowOpacity:0.2,
+                fontFamily:'Metro-Medium'
             }}
             />
         )
@@ -33,7 +32,8 @@ const TextInputCustom = ({name, color}) => {
             <Text style={{
                 textAlign:'center',
                 fontSize:15,
-                color:'white'
+                color:'white',
+                fontFamily:'Metro-Bold'
             }}> {text}
 
             </Text>
@@ -41,17 +41,8 @@ const TextInputCustom = ({name, color}) => {
     )
 }
 
-const App = () => {
-    const [fontsLoaded] = useFonts({
-        'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
-        'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
-        'Metro-Light': require('./assets/fonts/Metropolis-Light.otf'),
-        'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
-        'Metro-SemiBold': require('./assets/fonts/Metropolis-SemiBold.otf'),
-        })
-        if (!fontsLoaded) return <View>
-            <Text>Font Tidak Ditemukan</Text>
-            </View>
+const ForgotPasswordPage = () => {
+    
 return (
     <View style={{
         flex:1,
@@ -62,14 +53,16 @@ return (
             alignItems:'flex-start',
             justifyContent:'flex-start',
             width:'100%',
-            paddingLeft:'14px',
-            top:106
+            paddingLeft:14,
+            top:50
+            
         }}>
             <Text style={{
                 fontSize:'34px',
                 lineHeight:'34px',
                 fontFamily:'Metro-Bold',
-                color:'#222222'
+                color:'#222222',
+                fontFamily:'Metro-Bold'
             }}>Forgot Password</Text>
         </View>
 
@@ -80,7 +73,7 @@ return (
                 color:'#222222',
                 alignSelf:'center',
                 padding:20,
-                bottom:10,
+                bottom:90,
                 fontFamily:'Metro-Medium'
             }}>Please, enteer your email addrerss. You will receive a link to create a new password via email.</Text>
         </View>
@@ -88,27 +81,25 @@ return (
         <View style={{
             flex:1,
             width:'100%',
-            height:'64px',
-            bottom:100,
+            height:64,
+            bottom:190,
             alignItems:'center',
             alignSelf:'center',
-            fontFamily:'Metro-Medium'
+            minHeight:200,
         }}>
             <TextInputCustom name='Email' color='#666666'/>
         </View>
 
 
         <View style={{
-            flex:1,
             justifyContent:'flex-end',
             alignItems:'center',
-            bottom:270,
+            bottom:280,
             width:'100%',
-            fontFamily:'Metro-SemiBold'
         }}>
             <ButtonCustom color='red' text='SEND'/>
         </View>
         </View>
 )
 }
-export default App
+export default ForgotPasswordPage
