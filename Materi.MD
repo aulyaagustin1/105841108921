@@ -1,4 +1,4 @@
-// import { StyleSheet, Text, View, TextInput, Image } from "react-native";
+<!-- // import { StyleSheet, Text, View, TextInput, Image } from "react-native";
 // import React from "react";
 
 // const App = () => {
@@ -572,9 +572,9 @@
 //         </View>
 // )
 // }
-// export default App
+// export default App -->
 
-//* Navigation dan Taksbar
+<!-- Navigation dan Taksbar
 
 import * as React from 'react';
 import { View, Text, Button } from 'react-native';
@@ -586,9 +586,9 @@ import HomeAktif from './assets/img/homeAktf.jpg';
 import HomeTdkAktif from './assets/img/homeNon.jpg';
 import shopAktif from './assets/img/shopAktf.jpg';
 import shopTdkAktif from './assets/img/shopNon.jpg';
-import { Image } from 'react-native';
+import { Image } from 'react-native'; -->
 
-// Navigation Bagian 1 
+<!-- // Navigation Bagian 1 
 // const Tab = createBottomTabNavigator();
 // function MyTabs() {
 //     return (~
@@ -634,8 +634,8 @@ import { Image } from 'react-native';
 // }
 // export default App;
 
-// Navigation Bagian 2
-const Tab = createBottomTabNavigator();
+// Navigation Bagian 2 -->
+<!-- const Tab = createBottomTabNavigator();
 
 function MyTabs() {
     return (
@@ -694,4 +694,4 @@ function App() {
     );
 }
 
-export default App;
+export default App; --> -->

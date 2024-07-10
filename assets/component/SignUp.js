@@ -63,7 +63,7 @@ return (
             justifyContent:'flex-start',
             width:'100%',
             paddingLeft:14,
-            top:50
+            top:30
         }}>
             <Text style={{
                 fontSize:34,
@@ -97,7 +97,7 @@ return (
 
             justifyContent:'flex-end',
             alignItems:'center',
-            bottom:90,
+            bottom:70,
             width:'100%',
         }}>
             <ButtonCustom color='red' text='SIGN UP'/>

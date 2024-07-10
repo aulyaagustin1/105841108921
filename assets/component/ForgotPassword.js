@@ -54,7 +54,7 @@ return (
             justifyContent:'flex-start',
             width:'100%',
             paddingLeft:14,
-            top:50
+            top:30
             
         }}>
             <Text style={{
@@ -73,7 +73,7 @@ return (
                 color:'#222222',
                 alignSelf:'center',
                 padding:20,
-                bottom:90,
+                bottom:75,
                 fontFamily:'Metro-Medium'
             }}>Please, enteer your email addrerss. You will receive a link to create a new password via email.</Text>
         </View>
@@ -82,7 +82,7 @@ return (
             flex:1,
             width:'100%',
             height:64,
-            bottom:190,
+            bottom:150,
             alignItems:'center',
             alignSelf:'center',
             minHeight:200,
@@ -94,7 +94,7 @@ return (
         <View style={{
             justifyContent:'flex-end',
             alignItems:'center',
-            bottom:280,
+            bottom:240,
             width:'100%',
         }}>
             <ButtonCustom color='red' text='SEND'/>

@@ -54,7 +54,7 @@ return (
             justifyContent:'flex-start',
             width:'100%',
             paddingLeft:14,
-            top:50,
+            top:30,
         }}>
             <Text style={{
                 fontSize:34,
@@ -95,7 +95,7 @@ return (
         <View style={{
             justifyContent:'flex-end',
             alignItems:'center',
-            bottom:170,
+            bottom:130,
             width:'100%',
         }}>
             <ButtonCustom color='red' text='LOGIN'/>
