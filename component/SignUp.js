@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { useFonts } from "expo-font";
 
     const TextInputCustom = ({name, color}) => {
         return (
@@ -20,6 +21,7 @@ import React from "react";
             />
         )
     }
+
 
 const ButtonCustom =({color, text}) => {
     return (
@@ -42,11 +44,18 @@ const ButtonCustom =({color, text}) => {
     )
 }
 
-const Login = ({navigation}) => {
+const SignUp = ({navigation}) => {
+    const [fontLoaded] = useFonts({
+        'Metro-Bold': require('../assets/fonts/Metropolis-Bold.otf'),
+        'Metro-Medium': require('../assets/fonts/Metropolis-Medium.otf'),
+    })
+    if (!fontLoaded) return <View>
+        <Text>Loading../assets.</Text>
+    </View>
 return (
     <View style={{
         flex:1,
-        backgroundColor:'#F5F5F5'
+        backgroundColor:'#F5F5F5',
     }}>
         <View style={{
             flex:1,
@@ -54,56 +63,49 @@ return (
             justifyContent:'flex-start',
             width:'100%',
             paddingLeft:14,
-            top:30,
+            top:30
         }}>
             <Text style={{
                 fontSize:34,
                 lineHeight:34,
                 color:'#222222',
                 fontFamily:'Metro-Bold'
-            }}>Login</Text>
+            }}>Sign Up</Text>
         </View>
 
         <View style={{
             flex:1,
             width:'100%',
             height:64,
-            bottom:30,
             alignItems:'center',
             alignSelf:'center',
-            minHeight:200
+            minHeight:250,
         }}>
+            <TextInputCustom name='Name' color='#666666'/>
             <TextInputCustom name='Email' color='#666666'/>
             <TextInputCustom name='Password' color='#666666'/>
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Forgot Password')}
-            style={{
-                flex:1,
-                bottom:80,
-            }}>
-        
-            <Text style={{
-                color:'#222222',
-                alignSelf:'flex-end',
-                right:25,
-                fontSize:15,
-                fontFamily:'Metro-Medium',
-            }}>Forgot Password?</Text>
-        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}
+        style={{flex:1, alignItems:'flex-end', bottom:20, right:20 }} >
+                <Text style={{
+                    fontSize:15, fontFamily:'Metro-Medium', color:'#222222'
+                }}>Already have an account?</Text>
+            </TouchableOpacity>
 
         <View style={{
+
             justifyContent:'flex-end',
             alignItems:'center',
-            bottom:130,
+            bottom:70,
             width:'100%',
         }}>
-            <ButtonCustom color='red' text='LOGIN'/>
+            <ButtonCustom color='red' text='SIGN UP'/>
         </View>
 
         <View style={{
             alignSelf:'center',
-            bottom:35
+            bottom:30,
         }}>
             <Text style={{
                 color:'#222222',
@@ -123,7 +125,7 @@ return (
                 borderRadius:10,
                 padding:10
             }}>
-                <Image source={require('../img/google.png')} style={{width:30, height:30, resizeMode:'contain'}}/>
+                <Image source={require('../assets/img/google.png')} style={{width:30, height:30, resizeMode:'contain'}}/>
             </View>
 
             <View style={{
@@ -131,12 +133,11 @@ return (
                 borderRadius:10,
                 padding:10
             }}>
-                <Image source={require('../img/facebook.png')} style={{width:30, height:30, resizeMode:'contain'}}/>
+                <Image source={require('../assets/img/facebook.png')} style={{width:30, height:30, resizeMode:'contain'}}/>
             </View>
         </View>
             
         </View>
 )
 }
-export default Login
-
+export default SignUp
