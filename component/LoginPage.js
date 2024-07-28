@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { useFonts } from "expo-font";
 
     const TextInputCustom = ({name, color}) => {
         return (
@@ -43,6 +44,13 @@ const ButtonCustom =({color, text}) => {
 }
 
 const Login = ({navigation}) => {
+    const [fontLoaded] = useFonts({
+        'Metro-Bold': require('../assets/fonts/Metropolis-Bold.otf'),
+        'Metro-Medium': require('../assets/fonts/Metropolis-Medium.otf'),
+    })
+    if (!fontLoaded) return <View>
+        <Text>Loading../assets.</Text>
+    </View>
 return (
     <View style={{
         flex:1,
@@ -98,7 +106,7 @@ return (
             bottom:50,
             width:'100%',
         }}>
-            <TouchableOpacity onPress={() => navigation.navigate('Shop')}  style={{
+            <TouchableOpacity onPress={() => navigation.navigate('aulyaStore')}  style={{
                 width:'90%',
                 height:50,
                 backgroundColor:'red',
@@ -114,7 +122,7 @@ return (
             </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}
+        <TouchableOpacity onPress={() => navigation.navigate('Signup')}
             style={{
                 flex:1,
                 bottom:30,

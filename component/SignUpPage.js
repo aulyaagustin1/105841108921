@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import { useFonts } from "expo-font";
 
     const TextInputCustom = ({name, color}) => {
         return (
@@ -45,13 +44,6 @@ const ButtonCustom =({color, text}) => {
 }
 
 const SignUp = ({navigation}) => {
-    const [fontLoaded] = useFonts({
-        'Metro-Bold': require('../assets/fonts/Metropolis-Bold.otf'),
-        'Metro-Medium': require('../assets/fonts/Metropolis-Medium.otf'),
-    })
-    if (!fontLoaded) return <View>
-        <Text>Loading../assets.</Text>
-    </View>
 return (
     <View style={{
         flex:1,
