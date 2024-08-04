@@ -14,7 +14,7 @@ function App() {
   return (
     <NavigationContainer>
 
-      <Stack.Navigator initialRouteName='aulyaFood' screenOptions={{
+      <Stack.Navigator initialRouteName='myTabs' screenOptions={{
         headerShown: false
       }} >
         <Stack.Screen name="aulyaFood" component={HomePage} />
