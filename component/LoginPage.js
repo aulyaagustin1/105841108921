@@ -106,7 +106,7 @@ return (
             bottom:50,
             width:'100%',
         }}>
-            <TouchableOpacity onPress={() => navigation.navigate('aulyaStore')}  style={{
+            <TouchableOpacity onPress={() => navigation.navigate('myTabs')}  style={{
                 width:'90%',
                 height:50,
                 backgroundColor:'red',

@@ -1,9 +1,18 @@
 import React from "react";
-import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
+import { View, Text, ImageBackground, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 
 const HomePage = () => {
     const navigation = useNavigation();
+    const [fontLoaded] = useFonts({
+        'Metro-Bold': require('../assets/fonts/Metropolis-Bold.otf'),
+        'Metro-Medium': require('../assets/fonts/Metropolis-Medium.otf'),
+        'Metro-Light': require('../assets/fonts/Metropolis-Light.otf'),
+    })
+    if (!fontLoaded) return <View>
+        <Text>Loading../assets.</Text>
+    </View>
 
     return (
         <ImageBackground source={require('../assets/img/hero-signup.png')} style={{
@@ -14,60 +23,65 @@ const HomePage = () => {
             padding: 20,
         }}>
 
-            <View style={{
-                padding: 30,
-                backgroundColor: 'rgba(0, 0, 0, 0.5)', borderRadius: 10,
-            }}>
+            <View>
+                <Image source={require('../assets/img/linear.png')} style={{
+                    width: '150%',
+                    resizeMode: 'stretch',
+                    top: 250,
+                    alignSelf: 'center',
+                }} />
+
                 <Text style={{
                     fontSize: 24,
                     color: 'white',
-                    fontWeight: 'bold',
-                    marginBottom: 20,
+                    marginBottom: 10,
+                    bottom: 100,
+                    fontFamily: 'Metro-Bold',
                 }}>
                     aulyaFood, Pilih Lauk Sesukamu dengan lebih mudah!
                 </Text>
                 <Text style={{
                     fontSize: 16,
                     color: 'white',
-                    marginBottom: 20,
+                    marginBottom: 30,
+                    bottom: 100,
+                    fontFamily: 'Metro-Light',
+                    width: '70%',
                 }}>
                     Pesan langsung dari ponselmu, lebih cepat dan praktis
                 </Text>
 
                 <TouchableOpacity style={{
                     backgroundColor: '#4CAF50',
-                    padding: 10,
+                    padding: 15,
                     alignItems: 'center',
-                    borderRadius: 5,
+                    borderRadius: 10,
+                    bottom: 100,
                 }}
-                    onPress={() => navigation.navigate('Signup')}>
+                onPress={() => navigation.navigate('Signup')}>
                     <Text style={{
                         color: '#fff',
                         fontSize: 16,
+                        fontFamily: 'Metro-Bold',
                     }}>Daftar Sekarang</Text>
                 </TouchableOpacity>
 
                 <Text style={{
                     color: 'white',
-                    fontSize: 16,
+                    fontSize: 14,
                     marginTop: 10,
+                    bottom: 100,
+                    alignSelf: 'center',
+                    fontFamily: 'Metro-Medium',
+                    fontSize: 12,
                 }}>
                     Sudah Punya Akun?
+                    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                        <Text style={{
+                            color: '#4CAF50',
+                        }}> Masuk</Text>
+                    </TouchableOpacity>
                 </Text>
-
-                <TouchableOpacity style={{
-                    backgroundColor: 'white',
-                    padding: 10,
-                    alignItems: 'center',
-                    borderRadius: 5,
-                    marginTop: 10,
-                }}
-                    onPress={() => navigation.navigate('Login')}>
-                    <Text style={{
-                        color: '#222222',
-                        fontSize: 16,
-                    }}>Masuk</Text>
-                </TouchableOpacity>
             </View>
         </ImageBackground>
     )

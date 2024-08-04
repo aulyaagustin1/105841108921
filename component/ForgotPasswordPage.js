@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, Image } from "react-native";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
 import React from "react";
 const TextInputCustom = ({name, color}) => {
     return (
@@ -41,7 +41,7 @@ const TextInputCustom = ({name, color}) => {
     )
 }
 
-const ForgotPasswordPage = () => {
+const ForgotPasswordPage = ({navigation}) => {
     
 return (
     <View style={{
@@ -99,6 +99,14 @@ return (
         }}>
             <ButtonCustom color='red' text='SEND'/>
         </View>
+        <Text style={{
+            color:'#222222',
+            alignSelf:'center',
+            bottom:200,
+            fontSize:15,
+            fontFamily:'Metro-Medium',
+        }}>Kembali ke halaman <TouchableOpacity><Text style={{fontSize:15, color:'blue'}} onPress={() => navigation.navigate('aulyaFood')}>beranda</Text></TouchableOpacity>?
+        </Text>
         </View>
 )
 }

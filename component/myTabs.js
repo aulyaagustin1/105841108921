@@ -1,60 +1,54 @@
-import React from 'react';
+import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Image } from 'react-native';
-import HomeScreen from './HomeScreen';
-import ShopPage from './ShopPage';
-import BagPage from './BagPage';
-import FavoritesPage from './FavoritesPage';
-import ProfilePage from './ProfilePage';
-import HomeAktif from '../assets/img/icon-tabs/homeAktif.png';
-import HomeNon from '../assets/img/icon-tabs/home.png';
-import ShopAktif from '../assets/img/icon-tabs/shopAktif.png';
-import ShopNon from '../assets/img/icon-tabs/shop.png';
-import FavoritesAktif from '../assets/img/icon-tabs/favoritesAktif.png';
-import FavoritesNon from '../assets/img/icon-tabs/favorites.png';
-import BagAktif from '../assets/img/icon-tabs/bagAktif.png';
-import BagNon from '../assets/img/icon-tabs/bag.png';
-import ProfilAktif from '../assets/img/icon-tabs/profileAktif.png';
-import ProfilNon from '../assets/img/icon-tabs/profile.png';
+import HomeScreen from '../component/HomeScreen';
+import FavoritesPage from '../component/FavoritesPage';
+import ListCart from '../component/screen/CartScreen';
+import ProfilePage from '../component/ProfilePage';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 
-const myTabs = () => {
+function myTabs() {
   return (
-    <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} options={{
-            headerShown: false,
-            tabBarIcon: ({focused}) => (
-                <Image source={focused ? HomeAktif : HomeNon} style={{width: 30, height: 30}}/>
-            ),
-        }}/>
-        <Tab.Screen name="Shop" component={ShopPage} options={{
-            headerShown: false,
-            tabBarIcon: ({focused}) => (
-                <Image source={focused ? ShopAktif : ShopNon} style={{width: 30, height: 30}}/>
-            ),
-        }}/>
-        <Tab.Screen name="Bag" component={BagPage} options={{
-            headerShown: false,
-            tabBarIcon: ({focused}) => (
-                <Image source={focused ? BagAktif : BagNon} style={{width: 30, height: 30}}/>
-            ),
-        }}/>
-        <Tab.Screen name="Favorites" component={FavoritesPage} options={{
-            headerShown: false,
-            tabBarIcon: ({focused}) => (
-                <Image source={focused ? FavoritesAktif : FavoritesNon} style={{width: 30, height: 30}}/>
-            ),
-        }}/>
-        <Tab.Screen name="Profil" component={ProfilePage} options={{
-            headerShown: false,
-            tabBarIcon: ({focused}) => (
-                <Image source={focused ? ProfilAktif : ProfilNon} style={{width: 30, height: 30}}/>
-            ),
-        }}/>
+      <Tab.Navigator 
+      screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color}) => {
+              let iconName;
 
-    </Tab.Navigator>
-  )
+              if (route.name === 'Beranda') {
+                  iconName = focused ? 'home' : 'home-outline';
+              } else if (route.name === 'Favorit') {
+                  iconName = focused ? 'heart' : 'heart-outline';
+              } else if (route.name === 'Detail') {
+                  iconName = focused ? 'reader' : 'reader-outline';
+              } else if (route.name === 'Profil') {
+                  iconName = focused ? 'person' : 'person-outline';
+              }
+
+              return <Icon name={iconName} size={30} color={color} />;
+      },
+      tabBarShowLabel: false,
+      tabBarActiveTintColor: 'black',
+      tabBarInactiveTintColor: 'gray',
+      tabBarStyle: {
+          backgroundColor: '#F5F5F5',
+          borderTopColor: 'transparent',
+          shadowColor: '#000',
+          shadowOffset: {
+              width: 0,
+              height: 2,
+          },
+          padding: 30,
+          alignContent: 'center',
+      }
+      })} >
+
+        <Tab.Screen name="Beranda" component={HomeScreen} />
+        <Tab.Screen name="Favorit" component={FavoritesPage} />
+        <Tab.Screen name="Detail" component={ListCart} options={{title: 'Detail Pesanan'}} />
+        <Tab.Screen name="Profil" component={ProfilePage} />
+      </Tab.Navigator>
+  );
 }
 
-export default myTabs
+export default myTabs;
