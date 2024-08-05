@@ -1,113 +1,79 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
-import React from "react";
-const TextInputCustom = ({name, color}) => {
-    return (
-            <TextInput placeholder={` ${name}`}
-            style={{
-                borderColor:'gray',
-                width:'90%',
-                height:'64px',
-                marginBottom:10,
-                padding:10,
-                color:color,
-                backgroundColor:'white',
-                shadowColor:'black',
-                shadowRadius:1,
-                shadowOpacity:0.2,
-                fontFamily:'Metro-Medium'
-            }}
-            />
-        )
-    }
-    
-    const ButtonCustom =({color, text}) => {
-        return (
-            <View style={{
-                backgroundColor:color,
-                width:'90%',
-                height:50,
-                borderRadius:20,
-                justifyContent:'center'
-            }}>
-            <Text style={{
-                textAlign:'center',
-                fontSize:15,
-                color:'white',
-                fontFamily:'Metro-Bold'
-            }}> {text}
+import React from 'react';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 
-            </Text>
-        </View>
-    )
-}
-
-const ForgotPasswordPage = ({navigation}) => {
-    
-return (
-    <View style={{
-        flex:1,
-        backgroundColor:'#F5F5F5'
-    }}>
-        <View style={{
-            flex:1,
-            alignItems:'flex-start',
-            justifyContent:'flex-start',
-            width:'100%',
-            paddingLeft:14,
-            top:30
-            
-        }}>
-            <Text style={{
-                fontSize:'34px',
-                lineHeight:'34px',
-                fontFamily:'Metro-Bold',
-                color:'#222222',
-                fontFamily:'Metro-Bold'
-            }}>Forgot Password</Text>
-        </View>
-
-        <View style={{
-            flex:1,
-        }}>
-            <Text style={{
-                color:'#222222',
-                alignSelf:'center',
-                padding:20,
-                bottom:75,
-                fontFamily:'Metro-Medium'
-            }}>Please, enteer your email addrerss. You will receive a link to create a new password via email.</Text>
-        </View>
-
-        <View style={{
-            flex:1,
-            width:'100%',
-            height:64,
-            bottom:150,
-            alignItems:'center',
-            alignSelf:'center',
-            minHeight:200,
-        }}>
-            <TextInputCustom name='Email' color='#666666'/>
-        </View>
-
-
-        <View style={{
-            justifyContent:'flex-end',
-            alignItems:'center',
-            bottom:240,
-            width:'100%',
-        }}>
-            <ButtonCustom color='red' text='SEND'/>
-        </View>
-        <Text style={{
-            color:'#222222',
-            alignSelf:'center',
-            bottom:200,
-            fontSize:15,
-            fontFamily:'Metro-Medium',
-        }}>Kembali ke halaman <TouchableOpacity><Text style={{fontSize:15, color:'blue'}} onPress={() => navigation.navigate('aulyaFood')}>beranda</Text></TouchableOpacity>?
+const ForgotPasswordPage = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.image} />
+      <View style={styles.formContainer}>
+        <Text style={styles.title}>Lupa Kata Sandi</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Kata Sandi Baru"
+          secureTextEntry
+        />
+        <TouchableOpacity style={styles.submitButton}>
+          <Text style={styles.submitButtonText}>Atur Ulang Kata Sandi</Text>
+        </TouchableOpacity>
+        <Text style={styles.backToLogin} onPress={() => navigation.navigate('Login')}>
+          Kembali ke Login
         </Text>
-        </View>
-)
-}
-export default ForgotPasswordPage
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: {
+    width: '100%',
+    height: 150,
+  },
+  formContainer: {
+    width: '80%',
+    marginTop: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#ff6347',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  input: {
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    marginBottom: 15,
+    paddingLeft: 10,
+    borderRadius: 5,
+  },
+  submitButton: {
+    backgroundColor: '#ff6347',
+    padding: 10,
+    alignItems: 'center',
+    borderRadius: 5,
+  },
+  submitButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  backToLogin: {
+    textAlign: 'center',
+    color: '#ff6347',
+    marginTop: 10,
+  },
+});
+
+export default ForgotPasswordPage;

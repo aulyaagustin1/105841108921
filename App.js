@@ -14,7 +14,11 @@ function App() {
   return (
     <NavigationContainer>
 
+<<<<<<< HEAD
       <Stack.Navigator initialRouteName='myTabs' screenOptions={{
+=======
+      <Stack.Navigator initialRouteName='Login' screenOptions={{
+>>>>>>> c935374 (.)
         headerShown: false
       }} >
         <Stack.Screen name="aulyaFood" component={HomePage} />
