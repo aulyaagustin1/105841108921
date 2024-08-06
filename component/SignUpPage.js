@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from 'reac
 const SignUpPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.image} />
+      <Image source={require('../assets/img/aulya.webp')} style={styles.image} />
       <View style={styles.formContainer}>
         <View style={styles.toggleButtons}>
           <TouchableOpacity style={styles.toggleButton} onPress={() => navigation.navigate('Login')}>
@@ -35,8 +35,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: '100%',
+    width: '50%',
     height: 150,
+    borderRadius:30
   },
   formContainer: {
     width: '80%',

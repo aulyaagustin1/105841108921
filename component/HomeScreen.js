@@ -1,19 +1,17 @@
-import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from 'react-native'
-import React, {useState, useEffect} from 'react';
+import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 
-const HomeScreen = () => {
+const HomeScreen = ({ addToCart, addToFavorites, favorites }) => {
   const [loaded] = useFonts({
     'Metro-Bold': require('../assets/fonts/Metropolis-Bold.otf'),
     'Metro-Medium': require('../assets/fonts/Metropolis-Medium.otf'),
   });
 
-
   const navigation = useNavigation();
 
-  
   const data = [
     {
       id: '1',
@@ -24,7 +22,6 @@ const HomeScreen = () => {
       rating: 4.7,
       image: require('../assets/img/food/1.jpeg')
     },
-    
     {
       id: '2',
       title: 'Grilled Buttermilk Chicken',
@@ -34,7 +31,6 @@ const HomeScreen = () => {
       rating: 4.5,
       image: require('../assets/img/food/2.jpeg')
     },
-    
     {
       id: '3',
       title: 'Salad',
@@ -44,7 +40,6 @@ const HomeScreen = () => {
       rating: 4.6,
       image: require('../assets/img/food/3.jpeg')
     },
-
     { 
       id: '4',
       title: 'Toast',
@@ -108,12 +103,10 @@ const HomeScreen = () => {
       rating: 4.6,
       image: require('../assets/img/food/10.jpeg')
     },
-
   ];
   
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredData, setFilteredData] = useState(data);
-  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     setFilteredData(data);
@@ -128,12 +121,6 @@ const HomeScreen = () => {
       setFilteredData(data);
     }
   };
-
-  const addToFavorites = (item) => {
-    setFavorites((prevFavorites) => [...prevFavorites, item]);
-    navigation.navigate('Favorit', {...favorites, item});
-  };
-
 
   const renderItem = ({ item }) => (
     <View style={{
@@ -197,38 +184,42 @@ const HomeScreen = () => {
         flexDirection: 'row',
         justifyContent: 'space-between',
       }}>
+        <TouchableOpacity style={{
+          flex: 1,
+          backgroundColor: '#4CAF50',
+          padding: 10,
+          alignItems: 'center',
+          borderRadius: 5,
+          marginBottom: 10,
+        }} onPress={() => {
+          addToCart(item);
+        }} >
+          <Text style={{
+            color: '#fff',
+            fontSize: 16,
+            fontFamily: 'Metro-Bold',
+          }}>Tambah</Text>
+        </TouchableOpacity>
+      </View>
+
       <TouchableOpacity style={{
-        flex : 1,
-        backgroundColor: '#4CAF50',
-        padding: 10,
-        alignItems: 'center',
-        borderRadius: 5,
-        marginBottom: 10,
-      }} onPress={() => navigation.navigate('Detail')} >
-        <Text style={{
-          color: '#fff',
-          fontSize: 16,
-          fontFamily: 'Metro-Bold',
-        }}>Tambah</Text>
+        position: 'absolute',
+        top: 10,
+        right: 10,
+      }}
+      onPress={() => {
+        addToFavorites(item);
+      }} >
+        <Icon name={favorites.some(fav => fav.id === item.id) ? "heart" : "heart-outline"} size={24} color="red" style={{ padding: 15 }} />
       </TouchableOpacity>
     </View>
+  );
 
-    <TouchableOpacity style={{
-      position: 'absolute',
-      top: 10,
-      right: 10,
-    }}
-    onPress={() => addToFavorites(item)} >
-      <Icon name="heart-outline" size={24} color="red" style={{padding:15}} />
-    </TouchableOpacity>
+  if (!loaded) return (
+    <View>
+      <Text>Loading...</Text>
     </View>
-  )
-
-  if (!loaded) return 
-  <View>
-    <Text>Loading...</Text>
-  </View>
-
+  );
 
   return (
     <View style={{
@@ -273,9 +264,8 @@ const HomeScreen = () => {
           paddingBottom: 20,
         }}
       />
-
     </View>
-  )
+  );
 }
 
-export default HomeScreen
+export default HomeScreen;

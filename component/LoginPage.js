@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image } from 'reac
 const LoginPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.image} />
+      <Image source={require('../assets/img/aulya.webp')} style={styles.image} />
       <View style={styles.formContainer}>
         <View style={styles.toggleButtons}>
           <TouchableOpacity style={[styles.toggleButton, styles.activeButton]}>
@@ -16,7 +16,7 @@ const LoginPage = ({ navigation }) => {
         </View>
         <TextInput style={styles.input} placeholder="Email" keyboardType="email-address" autoCapitalize="none" />
         <TextInput style={styles.input} placeholder="Kata Sandi" secureTextEntry />
-        <TouchableOpacity style={styles.submitButton}>
+        <TouchableOpacity style={styles.submitButton} onPress={() => navigation.navigate ('MyTabs')}>
           <Text style={styles.submitButtonText}>Masuk</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
@@ -46,8 +46,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: '100%',
+    width: '50%',
     height: 150,
+    borderRadius:30
   },
   formContainer: {
     width: '80%',
