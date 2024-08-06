@@ -1,0 +1,8 @@
+{
+  "name": "My Project",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [5432],
+  "postCreateCommand": "npx prisma migrate dev --name init"
+}
